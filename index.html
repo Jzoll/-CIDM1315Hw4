@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: blue;
+            outline: 10px solid red;
+            color: white;
+            text-align: center;
+            padding: 15%;
+            margin: 5%;
+        }
+
+        h1 {
+            font-size: 6vw;
+        }
+
+        p {
+            font-size: 3vw;
+            padding-top: 15px;
+            margin: 0;
+        }
+
+        button {
+            font-size: 3vw;
+            margin-left: 5px;
+        }
+
+        input{
+            font-size: 3vw;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Guessing Game</h1>
+    <p>Please enter a number between 1 and 10</p>
+    <form><input type="text" id="nuGuess"><button type="button" onclick="guessGame()">Enter!</button>
+    </form>
+    <p id="gameResult"></p>
+    <script>
+        function guessGame() {
+            var guess = document.getElementById("nuGuess").value
+            let x = Math.floor((Math.random() * 10) + 1);
+            if (isNaN(guess)) {
+                //NaN
+                document.getElementById('gameResult').innerText = "You did not enter a number";
+            } else if (guess < 1) {
+                //guess less that 1
+                document.getElementById('gameResult').innerText = "Your guess is less than 1. Enter new guess.";
+            }
+            else if (guess > 10) {
+                //guess more than 10
+                document.getElementById('gameResult').innerText = "Your guess is more than 10. Enter new guess.";
+            }
+            else if (guess == x) {
+                //guess is correct
+                document.getElementById('gameResult').innerText = "You guessed correctly!";
+            }
+            else if (guess < x) {
+                //guess is less than random number
+                document.getElementById('gameResult').innerText = "Your guess is too low. " + x + " is the correct number.";
+            }
+            else if (guess > x) {
+                //guess is more than random number
+                document.getElementById('gameResult').innerText = "Your guess is too high. " + x + " is the correct number.";
+            }
+        }
+    </script>
+</body>
+
+</html>
